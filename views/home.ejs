@@ -1,0 +1,60 @@
+<!-- home page template to display only if user is logged in -->
+<div class="container d-flex flex-wrap flex-column">
+  <% if(locals.user) { %> <% if(assets) { %> <% for(asset of assets){ %>
+
+  <div class="card text-center w-75 bg-light" style="margin: 0.5rem">
+    <div class="card-header">
+      <h5 class="card-title">#Property</h5>
+    </div>
+
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">LOCATION: <%=asset.location%></li>
+        <li class="list-group-item">SIZE: <%=asset.size%> BHK</li>
+        <li class="list-group-item">RENT: <%=asset.rent%> INR</li>
+      </ul>
+     
+        <h5 class="card-footer">User Activity</h5>
+    
+      <% if(asset.tenant) { %> <% for(tenant of asset.tenant){
+      %>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Name : <%=tenant.id.name%></li>
+        <li class="list-group-item">EmailId : <%=tenant.id.email%></li>
+        <li class="list-group-item">Status : <%=tenant.stat%></li>
+        <li class="list-group-item">
+          <div class="dropdown">
+            <a
+              class="btn btn-outline-success dropdown-toggle btn-sm"
+              href="#"
+              role="button"
+              id="dropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              UPDATE: <%=tenant.stat%>
+            </a>
+            <!-- dropdown menu container -->
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <!-- links to update status  -->
+
+              <a
+                class="dropdown-item"
+                href="/home/update-status/<%=asset.id%>/<%=tenant.id._id%>/Accepted"
+                >Accept Request</a
+              >
+              <a
+                class="dropdown-item"
+                href="/home/update-status/<%=asset.id%>/<%=tenant.id._id%>/Rejected"
+                >Reject Request</a
+              >
+            </div>
+          </div>
+        </li>
+      </ul>
+      <%}%> <%}%>
+    </div>
+  </div>
+  <%}%> <% } %> <% } %>
+</div>

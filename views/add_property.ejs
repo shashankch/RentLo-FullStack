@@ -1,0 +1,40 @@
+<!-- include card styling -->
+<link rel="stylesheet" href="/css/card.css">
+<!-- card container starrts here -->
+<div class="card" style="width: 450px;">
+  <div class="card-body">
+    <h5 class="card-title">Add Property</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Enter Details</h6>
+    <p class="card-text">
+        <!-- form data to send data to create user if not present in db -->
+    <form action="/home/addAsset/<%=profile_user.id %>" method="POST">
+
+
+       <div class="form-group">
+        <label for="size">Size</label>
+        <input type="number" class="form-control" name="size" aria-describedby="emailHelp" id="size"
+          placeholder="Enter 1/2/3 BHK or more " required>
+        
+      </div>
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" class="form-control" name="location" aria-describedby="emailHelp" id="location"
+          placeholder="Enter address" required>
+        
+      </div>
+      <div class="form-group">
+        <label for="Rent">Rent</label>
+        <input type="text" class="form-control" name="rent" aria-describedby="emailHelp" id="rent"
+          placeholder="Enter price " required>
+        
+      </div>
+    
+      <div id="button-div">
+        <button type="submit" class="btn  btn-info" value="Add Property">Add</button>
+      </div>
+      
+    </form>
+    </p>
+ 
+  </div>
+</div>
